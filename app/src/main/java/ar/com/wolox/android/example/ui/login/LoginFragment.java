@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import ar.com.wolox.android.R;
 import ar.com.wolox.android.example.ui.example.ExamplePresenter;
@@ -59,14 +60,15 @@ public class LoginFragment extends WolmoFragment<ExamplePresenter> implements IL
         vLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getPresenter().storeUsername(vUserNameInput.getText().toString());
+                Toast.makeText(getContext(), "Log In press", Toast.LENGTH_LONG).show();
+                //getPresenter().storeUsername(vUserNameInput.getText().toString());
             }
         });
 
         vSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(getContext(), "Sign In press", Toast.LENGTH_LONG).show();
             }
         });
 
