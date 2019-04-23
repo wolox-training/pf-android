@@ -17,5 +17,9 @@
     <string name="signup">Sign Up</string>
     <string name="first_name">Email</string>
     <string name="last_name">Password</string>
+    <string name="error_campo_incompleto">Este campo es requerido</string>
+    <string name="error_formato_invalido">El formato de este campo es incorrecto</string>
+    <string name="saved_user_email">email</string>
+    <string name="preference_file_key">wolox</string>
 
 </resources>
