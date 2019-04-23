@@ -13,5 +13,11 @@ abstract class LoginModule {
     internal abstract fun routeActivity(): RouteActivity
 
     @ContributesAndroidInjector
+    internal abstract fun signInActivity(): SignInActivity
+
+    @ContributesAndroidInjector
     internal abstract fun loginFragment(): LoginFragment
+
+    @ContributesAndroidInjector
+    internal abstract fun signInFragment(): SignInFragment
 }

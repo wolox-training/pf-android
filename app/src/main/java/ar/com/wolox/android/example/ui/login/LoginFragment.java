@@ -18,6 +18,7 @@ import java.util.regex.Pattern;
 
 import ar.com.wolox.android.R;
 import ar.com.wolox.android.example.ui.example.ExamplePresenter;
+import ar.com.wolox.android.example.ui.home.HomeActivity;
 import ar.com.wolox.android.example.ui.viewpager.ViewPagerActivity;
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment;
 import butterknife.BindView;
@@ -75,6 +76,9 @@ public class LoginFragment extends WolmoFragment<ExamplePresenter> implements IL
                 } else {
                     guardarUsuario(vUserNameInput.getText().toString());
                     Toast.makeText(getContext(), "Log In press", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getActivity(), HomeActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
                     //getPresenter().storeUsername(vUserNameInput.getText().toString());
                 }
             }
@@ -83,8 +87,9 @@ public class LoginFragment extends WolmoFragment<ExamplePresenter> implements IL
         vSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vUserNameInput.requestFocus();
                 Toast.makeText(getContext(), "Sign In press", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getActivity(), SignInActivity.class);
+                startActivity(intent);
             }
         });
 

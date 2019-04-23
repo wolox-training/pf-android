@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.widget.Toast;
 
 import ar.com.wolox.android.R;
+import ar.com.wolox.android.example.ui.home.HomeActivity;
 import ar.com.wolox.wolmo.core.activity.WolmoActivity;
 
 /**
@@ -25,6 +26,9 @@ public class RouteActivity extends WolmoActivity {
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         } else {
+            Intent intent = new Intent(this, HomeActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
             Toast.makeText(this, "Usuario logueado", Toast.LENGTH_SHORT).show();
         }
     }
