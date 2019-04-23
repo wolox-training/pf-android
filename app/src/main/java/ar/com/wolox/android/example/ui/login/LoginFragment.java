@@ -1,14 +1,20 @@
 package ar.com.wolox.android.example.ui.login;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.LinkMovementMethod;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.regex.Pattern;
 
 import ar.com.wolox.android.R;
 import ar.com.wolox.android.example.ui.example.ExamplePresenter;
@@ -29,7 +35,7 @@ public class LoginFragment extends WolmoFragment<ExamplePresenter> implements IL
     @BindView(R.id.vUserNameInput)
     EditText vUserNameInput;
     @BindView(R.id.vPasswordInput)
-    EditText vPasswordIntro;
+    EditText vPasswordInput;
     @BindView(R.id.vTermsAndConditions)
     TextView vTermsAndConditions;
 
@@ -60,19 +66,42 @@ public class LoginFragment extends WolmoFragment<ExamplePresenter> implements IL
         vLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Log In press", Toast.LENGTH_LONG).show();
-                //getPresenter().storeUsername(vUserNameInput.getText().toString());
+                if (TextUtils.isEmpty(vUserNameInput.getText())) {
+                    vUserNameInput.setError(getString(R.string.error_campo_incompleto));
+                } else if (!validarEmail(vUserNameInput.getText().toString())) {
+                    vUserNameInput.setError(getString(R.string.error_formato_invalido));
+                } else if (vPasswordInput.getText().toString().isEmpty()) {
+                    vPasswordInput.setError(getString(R.string.error_campo_incompleto));
+                } else {
+                    guardarUsuario(vUserNameInput.getText().toString());
+                    Toast.makeText(getContext(), "Log In press", Toast.LENGTH_LONG).show();
+                    //getPresenter().storeUsername(vUserNameInput.getText().toString());
+                }
             }
         });
 
         vSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vUserNameInput.requestFocus();
                 Toast.makeText(getContext(), "Sign In press", Toast.LENGTH_LONG).show();
             }
         });
 
         vTermsAndConditions.setMovementMethod(LinkMovementMethod.getInstance());
+    }
+
+    private void guardarUsuario(String userMail) {
+        SharedPreferences sharedPref = getActivity().getSharedPreferences(
+                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(getString(R.string.saved_user_email), userMail);
+        editor.commit();
+    }
+
+    private boolean validarEmail(String email) {
+        Pattern pattern = Patterns.EMAIL_ADDRESS;
+        return pattern.matcher(email).matches();
     }
 
     @Override
