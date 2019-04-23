@@ -85,7 +85,6 @@ public class LoginFragment extends WolmoFragment<ExamplePresenter> implements IL
         vSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vUserNameInput.requestFocus();
                 Toast.makeText(getContext(), "Sign In press", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getActivity(), SignInActivity.class);
                 startActivity(intent);
