@@ -75,11 +75,9 @@ public class LoginFragment extends WolmoFragment<ExamplePresenter> implements IL
                     vPasswordInput.setError(getString(R.string.error_campo_incompleto));
                 } else {
                     guardarUsuario(vUserNameInput.getText().toString());
-                    Toast.makeText(getContext(), "Log In press", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(getActivity(), HomeActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
-                    //getPresenter().storeUsername(vUserNameInput.getText().toString());
                 }
             }
         });
@@ -87,6 +85,7 @@ public class LoginFragment extends WolmoFragment<ExamplePresenter> implements IL
         vSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vUserNameInput.requestFocus();
                 Toast.makeText(getContext(), "Sign In press", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getActivity(), SignInActivity.class);
                 startActivity(intent);
