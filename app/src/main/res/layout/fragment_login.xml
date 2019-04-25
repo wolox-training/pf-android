@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/vImagenFondo"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:adjustViewBounds="true"
@@ -23,9 +23,9 @@
         android:alpha=".9"
         android:background="@drawable/gradient"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView2">
+        app:layout_constraintEnd_toEndOf="@+id/vImagenFondo"
+        app:layout_constraintStart_toStartOf="@+id/vImagenFondo"
+        app:layout_constraintTop_toTopOf="@+id/vImagenFondo">
 
     </FrameLayout>
 

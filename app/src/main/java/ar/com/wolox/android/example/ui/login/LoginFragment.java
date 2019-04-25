@@ -15,7 +15,8 @@ import android.widget.Toast;
 import java.util.regex.Pattern;
 
 import ar.com.wolox.android.R;
-import ar.com.wolox.android.example.ui.viewpager.ViewPagerActivity;
+import ar.com.wolox.android.example.model.User;
+import ar.com.wolox.android.example.ui.home.HomeActivity;
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment;
 import butterknife.BindView;
 
@@ -70,7 +71,7 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILog
                 } else if (vPasswordInput.getText().toString().isEmpty()) {
                     vPasswordInput.setError(getString(R.string.error_campo_incompleto));
                 } else {
-                    getPresenter().storeUsername(getActivity(), vUserNameInput.getText().toString());
+                    getPresenter().validarUserMail(vUserNameInput.getText().toString());
                 }
             }
         });
@@ -98,7 +99,15 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILog
 
     @Override
     public void onUsernameSaved() {
-        Intent intent = new Intent(getActivity(), ViewPagerActivity.class);
+        Intent intent = new Intent(getActivity(), HomeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+    }
+
+    @Override
+    public void onUsernameValidated(User user) {
+        if (user != null) {
+            getPresenter().storeUsername(user.getUsername());
+        }
     }
 }
