@@ -1,8 +1,6 @@
 package ar.com.wolox.android.example.ui.login;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -17,7 +15,6 @@ import android.widget.Toast;
 import java.util.regex.Pattern;
 
 import ar.com.wolox.android.R;
-import ar.com.wolox.android.example.ui.example.ExamplePresenter;
 import ar.com.wolox.android.example.ui.viewpager.ViewPagerActivity;
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment;
 import butterknife.BindView;
@@ -26,7 +23,7 @@ import butterknife.BindView;
  * sarasa
  */
 
-public class LoginFragment extends WolmoFragment<ExamplePresenter> implements ILoginView {
+public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILoginView {
 
     @BindView(R.id.vLoginButton)
     Button vLoginButton;
@@ -66,16 +63,14 @@ public class LoginFragment extends WolmoFragment<ExamplePresenter> implements IL
         vLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TextUtils.isEmpty(vUserNameInput.getText())) {
+                if (isValidUsernameAndPassword(vUserNameInput.getText().toString())) {
                     vUserNameInput.setError(getString(R.string.error_campo_incompleto));
-                } else if (!validarEmail(vUserNameInput.getText().toString())) {
+                } else if (!isValidEmail(vUserNameInput.getText().toString())) {
                     vUserNameInput.setError(getString(R.string.error_formato_invalido));
                 } else if (vPasswordInput.getText().toString().isEmpty()) {
                     vPasswordInput.setError(getString(R.string.error_campo_incompleto));
                 } else {
-                    guardarUsuario(vUserNameInput.getText().toString());
-                    Toast.makeText(getContext(), "Log In press", Toast.LENGTH_LONG).show();
-                    //getPresenter().storeUsername(vUserNameInput.getText().toString());
+                    getPresenter().storeUsername(getActivity(), vUserNameInput.getText().toString());
                 }
             }
         });
@@ -91,15 +86,11 @@ public class LoginFragment extends WolmoFragment<ExamplePresenter> implements IL
         vTermsAndConditions.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
-    private void guardarUsuario(String userMail) {
-        SharedPreferences sharedPref = getActivity().getSharedPreferences(
-                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString(getString(R.string.saved_user_email), userMail);
-        editor.commit();
+    private boolean isValidUsernameAndPassword(String userName) {
+        return TextUtils.isEmpty(userName);
     }
 
-    private boolean validarEmail(String email) {
+    private boolean isValidEmail(String email) {
         Pattern pattern = Patterns.EMAIL_ADDRESS;
         return pattern.matcher(email).matches();
     }
