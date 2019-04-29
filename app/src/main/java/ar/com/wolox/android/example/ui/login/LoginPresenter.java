@@ -50,7 +50,7 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
 
             @Override
             public void onFailure(Call<List<User>> call, Throwable t) {
-
+                getView().onUsernameValidated(null);
             }
         });
     }
