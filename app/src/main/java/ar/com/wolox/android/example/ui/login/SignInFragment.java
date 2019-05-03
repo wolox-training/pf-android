@@ -1,6 +1,7 @@
 package ar.com.wolox.android.example.ui.login;
 
 import ar.com.wolox.android.R;
+import ar.com.wolox.android.example.model.User;
 import ar.com.wolox.android.example.ui.example.ExamplePresenter;
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment;
 
@@ -21,7 +22,10 @@ public class SignInFragment extends WolmoFragment<ExamplePresenter> implements I
 
     @Override
     public void onUsernameSaved() {
-        //Intent intent = new Intent(getActivity(), ViewPagerActivity.class);
-        //startActivity(intent);
+    }
+
+    @Override
+    public void onUsernameValidated(User user) {
+
     }
 }
