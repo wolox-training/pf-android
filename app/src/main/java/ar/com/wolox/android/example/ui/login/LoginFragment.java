@@ -1,8 +1,8 @@
 package ar.com.wolox.android.example.ui.login;
 
-import android.content.Intent;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.text.Editable;
 import android.text.TextUtils;
