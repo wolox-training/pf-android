@@ -1,14 +1,9 @@
 package ar.com.wolox.android.example.ui.login;
 
-<<<<<<< 7fda8a3dc08ec71381aae3cf3017fee6223644c8
 import android.content.Intent;
-=======
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
->>>>>>> Added toast messages and network status check
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -122,7 +117,7 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILog
         progressDialog.dismiss();
         if (user != null) {
             if (user.getPassword().equals(vPasswordInput.getText().toString())) {
-                getPresenter().storeUsername(user.getUsername());
+                getPresenter().storeUsername(getActivity(), user.getUsername());
                 Intent intent = new Intent(getActivity(), HomeActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
