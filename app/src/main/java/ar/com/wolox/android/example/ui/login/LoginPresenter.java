@@ -1,9 +1,13 @@
 package ar.com.wolox.android.example.ui.login;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import java.util.List;
 
 import javax.inject.Inject;
 
+import ar.com.wolox.android.R;
 import ar.com.wolox.android.example.model.User;
 import ar.com.wolox.android.example.network.UserService;
 import ar.com.wolox.android.example.utils.UserSession;
@@ -50,13 +54,17 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
 
             @Override
             public void onFailure(Call<List<User>> call, Throwable t) {
-
+                getView().onUsernameValidated(null);
             }
         });
     }
 
-    public void storeUsername(String text) {
-        mUserSession.setUsername(text);
+    public void storeUsername(Context context, String userMail) {
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                context.getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(context.getString(R.string.saved_user_email), userMail);
+        editor.commit();
         getView().onUsernameSaved();
     }
 }
