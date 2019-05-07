@@ -118,9 +118,6 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILog
         if (user != null) {
             if (user.getPassword().equals(vPasswordInput.getText().toString())) {
                 getPresenter().storeUsername(getActivity(), user.getUsername());
-                Intent intent = new Intent(getActivity(), HomeActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
             } else {
                 Toast.makeText(getContext(), getString(R.string.wrong_password), Toast.LENGTH_LONG).show();
             }

@@ -25,5 +25,8 @@
     <string name="wrong_password">Wrong Password</string>
     <string name="user_not_found">User not found</string>
     <string name="no_internet_conection">There is no Internet conection</string>
+    <string name="wolox">Wolox</string>
+    <string name="news">News</string>
+    <string name="profile">Profile</string>
 
 </resources>
