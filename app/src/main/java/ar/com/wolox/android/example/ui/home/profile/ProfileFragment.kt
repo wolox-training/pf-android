@@ -13,6 +13,9 @@ class ProfileFragment @Inject constructor() : WolmoFragment<ProfilePresenter>(),
     override fun layout(): Int = R.layout.fragment_profile
 
     override fun init() {
-//        vToolbar.title = "Profile"
+    }
+
+    companion object{
+        fun newInstance() = ProfileFragment()
     }
 }

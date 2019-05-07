@@ -14,8 +14,8 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="@dimen/wolox_logo"
+            android:layout_height="@dimen/wolox_logo"
             android:layout_margin="8dp"
             app:srcCompat="@drawable/wolox_logo_large" />
 

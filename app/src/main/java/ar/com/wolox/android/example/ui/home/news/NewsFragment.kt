@@ -9,6 +9,9 @@ class NewsFragment @Inject constructor() : WolmoFragment<NewsPresenter>(), INews
     override fun layout(): Int = R.layout.fragment_news
 
     override fun init() {
-//        vToolbar.title = "News"
+    }
+
+    companion object{
+        fun newInstance() = NewsFragment()
     }
 }

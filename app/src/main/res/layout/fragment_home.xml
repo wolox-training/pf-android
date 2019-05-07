@@ -14,8 +14,8 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="@dimen/wolox_logo"
+            android:layout_height="@dimen/wolox_logo"
             android:layout_marginLeft="8dp"
             app:srcCompat="@drawable/wolox_logo_large" />
 
@@ -25,7 +25,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="8dp"
             android:textSize="30sp"
-            android:textColor="#000000"
+            android:textColor="@color/black"
             android:text="@string/wolox" />
     </LinearLayout>
 

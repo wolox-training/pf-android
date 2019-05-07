@@ -15,9 +15,6 @@ import javax.inject.Inject
 
 class HomeFragment @Inject constructor() : WolmoFragment<BasePresenter<Any>>() {
 
-    @Inject internal lateinit var page1Fragment: NewsFragment
-    @Inject
-    internal lateinit var page2Fragment: ProfileFragment
     private lateinit var fragmentPagerAdapter: SimpleFragmentPagerAdapter
 
     override fun layout(): Int = R.layout.fragment_home
@@ -26,8 +23,8 @@ class HomeFragment @Inject constructor() : WolmoFragment<BasePresenter<Any>>() {
 
         fragmentPagerAdapter = SimpleFragmentPagerAdapter(childFragmentManager)
         fragmentPagerAdapter.addFragments(
-                Pair<Fragment, String>(page1Fragment, getString(R.string.news)),
-                Pair<Fragment, String>(page2Fragment, getString(R.string.profile)))
+                Pair<Fragment, String>(NewsFragment.newInstance(), getString(R.string.news)),
+                Pair<Fragment, String>(ProfileFragment.newInstance(), getString(R.string.profile)))
         vViewPager.adapter = fragmentPagerAdapter
 
         vTabs.setupWithViewPager(vViewPager)
