@@ -1,4 +1,4 @@
-package ar.com.wolox.android.example.ui.home.fragment
+package ar.com.wolox.android.example.ui.home
 
 import android.graphics.Color
 import android.support.v4.app.Fragment

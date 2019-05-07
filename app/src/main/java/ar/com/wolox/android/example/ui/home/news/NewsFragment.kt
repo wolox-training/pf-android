@@ -11,7 +11,7 @@ class NewsFragment @Inject constructor() : WolmoFragment<NewsPresenter>(), INews
     override fun init() {
     }
 
-    companion object{
+    companion object {
         fun newInstance() = NewsFragment()
     }
 }

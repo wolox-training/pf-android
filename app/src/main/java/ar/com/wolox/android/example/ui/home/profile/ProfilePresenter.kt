@@ -8,5 +8,4 @@ class ProfilePresenter @Inject constructor(private val mRetrofitServices: Retrof
 
     override fun onViewAttached() {
     }
-
 }
