@@ -39,7 +39,7 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
      *
      * @param mail mail ingresado por el usuario
      */
-    public void validarUserMail(String mail) {
+    public void validateUserMail(String mail) {
         mRetrofitServices.getService(UserService.class).getUserByMail(mail).enqueue(new Callback<List<User>>() {
 
             @Override

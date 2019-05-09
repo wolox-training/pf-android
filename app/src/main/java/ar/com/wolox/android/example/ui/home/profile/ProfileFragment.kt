@@ -10,8 +10,4 @@ class ProfileFragment @Inject constructor() : WolmoFragment<ProfilePresenter>(),
 
     override fun init() {
     }
-
-    companion object {
-        fun newInstance() = ProfileFragment()
-    }
 }
