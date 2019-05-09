@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import ar.com.wolox.android.R
 import ar.com.wolox.android.example.model.News
 import kotlinx.android.synthetic.main.item_news.view.*
+import org.ocpsoft.prettytime.PrettyTime
+import java.text.SimpleDateFormat
 
 class NewsAdapter(private var myNews: ArrayList<News>) : RecyclerView.Adapter<NewsAdapter.NewsHolder>() {
 
@@ -33,7 +35,6 @@ class NewsAdapter(private var myNews: ArrayList<News>) : RecyclerView.Adapter<Ne
         holder.vCreatedAt.text = getTimeFromDate(myNews[position].createdAt)
         holder.vFavorite.isSelected = myNews[position].isFavorite
         holder.vAvatar.setImageURI(Uri.parse(myNews[position].picture))
-//        holder.vCreatedAt.text = myNews[position].createdAt
     }
 
     fun setNews(myNews: ArrayList<News>) {
@@ -43,13 +44,8 @@ class NewsAdapter(private var myNews: ArrayList<News>) : RecyclerView.Adapter<Ne
     @RequiresApi(Build.VERSION_CODES.O)
     fun getTimeFromDate(dateString: String?): String {
         return try {
-//            var date = LocalDate.parse(dateString)
-//            var formatter = DateTimeFormatter.ofPattern("dd-MMMM-yyyy")
-//            var formattedDate = date?.format(formatter)
-//            val formatter = DateTimeFormat.forPattern(DATE_FORMAT)
-//            val dt = LocalDate.parse(date, formatter)
-//            return PrettyTime().format(date.)
-            return "11/04/1975"
+            var date = SimpleDateFormat("yyyy-MM-dd").parse(dateString?.substring(0, 10))
+            return PrettyTime().format(date)
         } catch (e: Exception) {
             dateString.orEmpty()
         }

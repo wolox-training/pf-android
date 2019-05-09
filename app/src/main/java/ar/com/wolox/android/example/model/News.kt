@@ -1,6 +1,18 @@
 package ar.com.wolox.android.example.model
 
-data class News(val id: String, val userId: String, val createdAt: String, val title: String, val picture: String, val text: String, val likes: ArrayList<String>) {
+import com.google.gson.annotations.SerializedName
+
+data class News(
+    val id: String,
+    @SerializedName("userId")
+    val userId: String,
+    @SerializedName("createdAt")
+    val createdAt: String,
+    val title: String,
+    val picture: String,
+    val text: String,
+    val likes: ArrayList<String>
+) {
 
     var isFavorite = false
 }

@@ -24,7 +24,7 @@ class NewsPresenter @Inject constructor(private val toastFactory: ToastFactory, 
                         myNews.add(news)
                     }
                     for (i in 4..12) {
-                        val news = News(i.toString(), (i - 2).toString(), "8/05/2019", "Title " + i,
+                        val news = News(i.toString(), (i - 2).toString(), "2019-05-08", "Title " + i,
                                 "http://bucket1.glanacion.com/anexos/fotos/70/dia-del-amigo-2236070w620.jpg", "This is the text of the " + i, ArrayList())
                         myNews.add(news)
                     }
