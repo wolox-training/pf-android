@@ -80,7 +80,7 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILog
                     progressDialog.setMessage(getString(R.string.loading));
                     progressDialog.setIndeterminate(true);
                     progressDialog.show();
-                    getPresenter().validarUserMail(vUserNameInput.getText().toString());
+                    getPresenter().validateUserMail(vUserNameInput.getText().toString());
                 }
             }
         });

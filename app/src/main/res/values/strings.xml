@@ -18,13 +18,13 @@
     <string name="first_name">Email</string>
     <string name="last_name">Password</string>
     <string name="error_campo_incompleto">Este campo es requerido</string>
-    <string name="error_formato_invalido">El formato de este campo es incorrecto</string>
+    <string name="error_formato_invalido">The format of this field is incorrect</string>
     <string name="saved_user_email">email</string>
     <string name="preference_file_key">wolox</string>
     <string name="loading">Loading...</string>
     <string name="wrong_password">Wrong Password</string>
     <string name="user_not_found">User not found</string>
-    <string name="no_internet_conection">There is no Internet conection</string>
+    <string name="no_internet_conection">There is no Internet connection</string>
     <string name="wolox">Wolox</string>
     <string name="news">News</string>
     <string name="profile">Profile</string>
