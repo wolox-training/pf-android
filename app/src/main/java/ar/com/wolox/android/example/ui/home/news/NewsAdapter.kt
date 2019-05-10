@@ -1,5 +1,7 @@
 package ar.com.wolox.android.example.ui.home.news
 
+import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.support.annotation.RequiresApi
@@ -13,9 +15,9 @@ import kotlinx.android.synthetic.main.item_news.view.*
 import org.ocpsoft.prettytime.PrettyTime
 import java.text.SimpleDateFormat
 
-class NewsAdapter(private var myNews: ArrayList<News>) : RecyclerView.Adapter<NewsAdapter.NewsHolder>() {
+class NewsAdapter(private var myNews: ArrayList<News>, val context: Context?) : RecyclerView.Adapter<NewsAdapter.NewsHolder>() {
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): NewsAdapter.NewsHolder {
+    override fun onCreateViewHolder(viewGroup: ViewGroup, position: Int): NewsHolder {
         val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_news, viewGroup, false) as View
         return NewsHolder(view)
     }
@@ -25,12 +27,17 @@ class NewsAdapter(private var myNews: ArrayList<News>) : RecyclerView.Adapter<Ne
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override fun onBindViewHolder(holder: NewsAdapter.NewsHolder, position: Int) {
+    override fun onBindViewHolder(holder: NewsHolder, position: Int) {
         holder.vName.text = myNews[position].title
         holder.vDesc.text = myNews[position].text
         holder.vFavorite.setOnClickListener {
             myNews[position].isFavorite = !myNews[position].isFavorite
             holder.vFavorite.isSelected = myNews[position].isFavorite
+        }
+        holder.view.setOnClickListener {
+            var intent = Intent(context, NewsDetailActivity :: class.java)
+            intent.putExtra("news", myNews[position])
+            context?.startActivity(intent)
         }
         holder.vCreatedAt.text = getTimeFromDate(myNews[position].createdAt)
         holder.vFavorite.isSelected = myNews[position].isFavorite

@@ -1,6 +1,7 @@
 package ar.com.wolox.android.example.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class News(
     val id: String,
@@ -12,7 +13,7 @@ data class News(
     val picture: String,
     val text: String,
     val likes: ArrayList<String>
-) {
+) : Serializable {
 
     var isFavorite = false
 }

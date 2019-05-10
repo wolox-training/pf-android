@@ -27,7 +27,7 @@ class NewsFragment @Inject constructor(private val toastFactory: ToastFactory) :
         vSwiperefresh.setOnRefreshListener {
             presenter.loadNews()
         }
-        viewAdapter = NewsAdapter(presenter.myNews)
+        viewAdapter = NewsAdapter(presenter.myNews, context)
         vRecyclerNews.adapter = viewAdapter
         presenter.loadNews()
     }
