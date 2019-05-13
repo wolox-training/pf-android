@@ -8,8 +8,8 @@
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/vAvatar"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="@dimen/avatar_size"
+        android:layout_height="@dimen/avatar_size"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
@@ -62,8 +62,8 @@
 
     <ImageView
         android:id="@+id/vFavorite"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="@dimen/favorite_size"
+        android:layout_height="@dimen/favorite_size"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"

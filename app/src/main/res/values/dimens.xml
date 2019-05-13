@@ -45,6 +45,8 @@
     <dimen name="font_big">22sp</dimen>
     <dimen name="font_huge">24sp</dimen>
     <dimen name="wolox_logo">60dp</dimen>
+    <dimen name="avatar_size">48dp</dimen>
+    <dimen name="favorite_size">24dp</dimen>
 
     <!-- Add your custom dimens here -->
 </resources>

@@ -2,7 +2,6 @@ package ar.com.wolox.android.example.ui.home.news
 
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.View
 import ar.com.wolox.android.R
 import ar.com.wolox.android.example.model.News
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
@@ -21,22 +20,22 @@ class NewsFragment @Inject constructor(private val toastFactory: ToastFactory) :
         viewManager = LinearLayoutManager(context)
         vRecyclerNews.layoutManager = viewManager
         vFloatingActionButton.attachToRecyclerView(vRecyclerNews)
-        vFloatingActionButton.setOnClickListener(View.OnClickListener {
-            toastFactory.show("Add a new news")
-        })
+        vFloatingActionButton.setOnClickListener {
+            toastFactory.show(getString(R.string.add_news))
+        }
         vSwiperefresh.setOnRefreshListener {
-            presenter.loadNews()
+            context?.let { presenter.loadNews(it) }
         }
         viewAdapter = NewsAdapter(presenter.myNews)
         vRecyclerNews.adapter = viewAdapter
-        presenter.loadNews()
+        context?.let { presenter.loadNews(it) }
     }
 
     override fun onNewsLoaded(myNews: ArrayList<News>) {
         viewAdapter.setNews(myNews)
         viewAdapter.notifyDataSetChanged()
         if (vSwiperefresh.isRefreshing) {
-            toastFactory.show("The news was updated")
+            toastFactory.show(getString(R.string.news_updated))
             vSwiperefresh.isRefreshing = false
         }
     }

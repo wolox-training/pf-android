@@ -28,5 +28,9 @@
     <string name="wolox">Wolox</string>
     <string name="news">News</string>
     <string name="profile">Profile</string>
+    <string name="error_loading_news">Error loading the news</string>
+    <string name="no_news_to_show">There is no news to show</string>
+    <string name="add_news">Add a new news</string>
+    <string name="news_updated">The news was updated</string>
 
 </resources>
